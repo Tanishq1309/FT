@@ -5,7 +5,7 @@ from scipy.fft import fft, fftfreq
 import librosa.display
 
 # Load the audio file
-file_path = 'src\\audio\\bohemian_rhapsody.wav'
+file_path = 'src\\audio\\audio_files\\bohemian_rhapsody.wav'
 y, sr = librosa.load(file_path, sr=None)  # y is the audio time series, sr is the sampling rate
 
 # Print some basic information
@@ -39,15 +39,4 @@ plt.title("Frequency Spectrum of Bohemian Rhapsody")
 plt.xlabel("Frequency (Hz)")
 plt.ylabel("Magnitude")
 plt.xlim(0, 5000)  # Limiting the x-axis for better visibility (most musical content is within 0-5000 Hz)
-plt.show()
-
-# Generate the spectrogram
-D = np.abs(librosa.stft(y))**2
-S_db = librosa.amplitude_to_db(D, ref=np.max)
-
-# Display the spectrogram
-plt.figure(figsize=(14, 6))
-librosa.display.specshow(S_db, sr=sr, x_axis='time', y_axis='log')
-plt.colorbar(format='%+2.0f dB')
-plt.title('Spectrogram of Bohemian Rhapsody')
 plt.show()
